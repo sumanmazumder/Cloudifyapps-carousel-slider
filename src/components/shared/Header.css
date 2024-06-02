@@ -1,0 +1,33 @@
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px;
+    box-sizing: border-box;
+    position: absolute;
+    width: 100%;
+    top:0px;
+    left: 0px;
+    z-index: 1;
+}
+.play{
+    background-color: transparent;
+    border: 0px;
+    /* width: 20px;
+    height: 20px; */
+    padding: 0px;
+}
+.play img{
+    width: 24px;
+    height: 24px;
+}
+
+.sound{
+    background-color: transparent;
+    border: 0px;
+    margin-left: 15px;
+}
+.sound img{
+    width: 24px;
+    height: 24px;
+}
