@@ -11,8 +11,8 @@ import pauseIcon from "../../assets/images/pause-icon.svg";
 
 const Header = () => {
     const refAudio = useRef(null);
-    const [isPlay, setIsPlay] = useState(false);
-    const [muted, setMuted] = useState(false);
+    const [isPlay, setIsPlay] = useState(true);
+    const [muted, setMuted] = useState(true);
 
     const playAudio = () => {
         if(!isPlay){
@@ -41,16 +41,16 @@ const Header = () => {
     }
     
     useEffect(() => {
-        if (!refAudio.current.muted) {
-            console.log("Audio muted", refAudio.current.muted);
-            // refAudio.current.muted = true;
-            //   refAudio.current.play();
+        if (refAudio.current) {
+            console.log("Audio muted", refAudio.current);
+            // refAudio.current.muted = false;
+            // refAudio.current.play();
         }
     }, [refAudio.current]);
 
     return (
         <>
-            <audio allow="autoplay" controls loop ref={refAudio} style={{ visibility: "hidden", position: "absolute" }}>
+            <audio autoPlay={true} allow="autoplay" controls loop ref={refAudio} style={{ visibility: "hidden", position: "absolute" }}>
                 <source src={sound} type="audio/mpeg" />
             </audio>
             <div className="header">
@@ -60,7 +60,7 @@ const Header = () => {
                 </div>
                 <div className="audio">
                     <button className="play" onClick={playAudio}>
-                        { isPlay ? <img src={pauseIcon} /> : <img src={playIcon} />}                    
+                        { isPlay ? <img src={playIcon} /> : <img src={pauseIcon} />}                    
                     </button>
                     <button className="sound" type="button" onClick={handleAudio}>
                         {muted ? <img src={soundIcon} /> : <img src={muteIcon} />}

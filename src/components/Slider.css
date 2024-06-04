@@ -1,4 +1,4 @@
-.silder{
+.slider{
     display: flex;
     align-items: center;
     /* justify-content: center; */
@@ -21,47 +21,88 @@
 .navigation{
     flex: 0 0 100%;
 }
-.silder .item{
-    background-color: #ffffff;
+.slider .item{
+    /* background-color: #ffffff; */
     flex: 0 0 100%;
     border-radius: 5px;
-    padding: 5px;
     box-sizing: border-box;
-    min-height: 420px;
-    /* display: block; */
-    position: relative;
-    opacity: 1;
-    transition: 0.5s;
-    position: absolute;
-}
-.silder .item.slide-hidden{
     /* display: none; */
+    position: absolute;
     opacity: 0;
+    transition: 0.5s;
+    width: 100%;
+    z-index: 99;
 }
-.silder .ans{
+.slider-carousel:hover .item.card-active .qus{
+    transform: perspective(300px) rotateY(4deg);
+}
+.hover{
+    transition: transform 1500ms;
+    transform-style: preserve-3d;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 420px;
+}
+.slider .item.card-active{
+    /* display: block; */
+    opacity: 1;
+}
+.item.hidden:has(+ .item.card-active) {
+    background-color: blue;
+    transform: translateX(-100%);
+    z-index: -1;
+}
+.item.card-active + .item.hidden {
+    background-color: red;
+    z-index: -1;
+    transform: translateX(100%);
+}
+.slider .item .ans{
     background-color:transparent;
     border:0px;
     padding: 0px;
     cursor: pointer;
+    position: absolute;
+    height: 100%;
+    background-color: #ffffff;
+    padding: 5px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    transform:rotateY(180deg);
 }
-.silder .item .qus{
+.slider .item .qus{
     padding: 81px 60px;
     text-align: center;
     box-sizing: border-box;
     padding-bottom: 0px;
+    position: absolute;
+    height: 100%;
+    background-color: #ffffff;
+    border-radius: 5px;
+    z-index: 1;
+    transition: 0.5s;
 }
-.silder .item .qus h2{
+.slider .item .qus h2{
     font-size: 37px;
 }
-.silder .ans img{
+.slider .ans img{
     max-width: 100%;
     width: 100%;
 }
-.silder .ans  p{
+.slider .ans  p{
     font-family: 'Copernicus Trial Book';
     font-size: 24px;
     text-align: center;
     color: #000000;
+    margin: 0px;
+    padding: 11px 0px;
+}
+.slider .qus, .slider .ans{
+    backface-visibility: hidden;
+}
+.slider .item .hover.active {
+    transform: rotateY(180deg);
 }
 .navigation{
     text-align: center;
